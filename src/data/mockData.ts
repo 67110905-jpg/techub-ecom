@@ -4,6 +4,7 @@ import type { Product } from '../types';
  * Mock Data สำหรับสินค้าอุปกรณ์คอมพิวเตอร์
  * ใช้สำหรับแสดงผลในเว็บไซต์
  */
+
 export const products: Product[] = [
   {
     id: 1,
