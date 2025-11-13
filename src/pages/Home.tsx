@@ -6,7 +6,7 @@ interface HomeProps {
   onAddToCart: (product: Product) => void;  // เพิ่ม parameter
 }
 
-export default function Home({ onAddToCart }: HomeProps) {
+export default function Home({ }: HomeProps) {
   return (
     <div className="min-h-[calc(100vh-64px)] flex flex-col items-center justify-center text-center bg-gradient-to-r from-blue-600 to-blue-800 text-white overflow-hidden">
       <h1 className="text-5xl font-extrabold mb-6 drop-shadow-lg">
