@@ -73,6 +73,7 @@ function App() {
             <Route
               path="/"
               element={<Home onAddToCart={handleAddToCart} />}
+
             />
             <Route
               path="/products"
