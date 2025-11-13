@@ -12,6 +12,7 @@ import ProductDetail from "./pages/ProductDetail";
 
 import type { Product, CartItem } from "./types";
 
+
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -69,23 +70,22 @@ function App() {
 
         {/* 🔀 Routing แต่ละหน้า - เพิ่ม flex-1 ให้ยืดเต็มพื้นที่ */}
         <main className="flex-1">
-          <Routes>
+            <Routes>
             <Route
               path="/"
-              element={<Home onAddToCart={handleAddToCart} />}
-
+              element={<Home onAddToCart={(product) => handleAddToCart(product)} />}
             />
             <Route
               path="/products"
-              element={<Products onAddToCart={handleAddToCart} />}
+              element={<Products onAddToCart={(product) => handleAddToCart(product)} />}
             />
             <Route
               path="/product/:id"
-              element={<ProductDetail onAddToCart={handleAddToCart} />}
+              element={<ProductDetail onAddToCart={(product) => handleAddToCart(product)} />}
             />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-          </Routes>
+            </Routes>
         </main>
 
         {/* ✅ Footer จะอยู่ด้านล่างสุดเสมอ */}
