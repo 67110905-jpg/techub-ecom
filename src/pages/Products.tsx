@@ -15,8 +15,8 @@ const Products: React.FC<ProductsProps> = ({ onAddToCart }) => {
   );
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-blue-700 text-center">
+    <div className="container mx-auto px-8 pt-16 pb-8">
+      <h1 className="text-3xl font-bold mb-6 text-blue-700 text-center mt-14">
         สินค้าทั้งหมด
       </h1>
 
