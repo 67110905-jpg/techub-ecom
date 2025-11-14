@@ -19,7 +19,7 @@ export default function Contact() {
 
       <div className="mt-4">
         <a
-          href="/contact"
+          
           className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md"
         >
           ส่งอีเมลถึงเรา
