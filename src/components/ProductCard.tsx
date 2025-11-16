@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import type { Product } from "../types";
 
 interface ProductCardProps {
@@ -9,14 +10,20 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   return (
     <div className="bg-white rounded-xl shadow hover:shadow-lg transition p-4">
-      <img
-        src={product.image}
-        alt={product.name}
-        className="w-full h-40 object-cover rounded-lg"
-      />
-      <h3 className="text-lg font-semibold mt-2">{product.name}</h3>
-      <p className="text-gray-600 text-sm">{product.description}</p>
-      <p className="text-blue-600 font-bold mt-1">{product.price} ฿</p>
+
+      {/* 🔗 คลิกทั้งโซนนี้ไปหน้า Product Detail */}
+      <Link to={`/product/${product.id}`}>
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-40 object-cover rounded-lg"
+        />
+        <h3 className="text-lg font-semibold mt-2">{product.name}</h3>
+        <p className="text-gray-600 text-sm">{product.description}</p>
+        <p className="text-blue-600 font-bold mt-1">{product.price} ฿</p>
+      </Link>
+
+      {/* 🛒 ปุ่มเพิ่มลงตะกร้า (ไม่เปลี่ยนหน้า) */}
       <button
         onClick={() => onAddToCart(product)}
         className="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"

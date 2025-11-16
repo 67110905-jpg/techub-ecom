@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
@@ -12,7 +13,6 @@ import ProductDetail from "./pages/ProductDetail";
 
 import type { Product, CartItem } from "./types";
 
-
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -21,6 +21,7 @@ function App() {
   const handleAddToCart = (product: Product) => {
     setCartItems((prev) => {
       const exist = prev.find((item) => item.id === product.id);
+
       if (exist) {
         return prev.map((item) =>
           item.id === product.id
@@ -28,6 +29,7 @@ function App() {
             : item
         );
       }
+
       return [...prev, { ...product, quantity: 1 }];
     });
   };
@@ -38,12 +40,15 @@ function App() {
       handleRemoveItem(id);
       return;
     }
+
     setCartItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity } : item
+      )
     );
   };
 
-  // ❌ ลบสินค้าออกจากตะกร้า
+  // ❌ ลบสินค้าในตะกร้า
   const handleRemoveItem = (id: number) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
@@ -53,13 +58,14 @@ function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen bg-gray-50">
-        {/* ✅ Navbar แสดงทุกหน้า */}
+        
+        {/* Navbar */}
         <Navbar
           cartItemsCount={cartCount}
           onCartClick={() => setIsCartOpen(true)}
         />
 
-        {/* 🛒 ตะกร้าสินค้า */}
+        {/* Cart Drawer */}
         <Cart
           isOpen={isCartOpen}
           onClose={() => setIsCartOpen(false)}
@@ -68,27 +74,27 @@ function App() {
           onRemoveItem={handleRemoveItem}
         />
 
-        {/* 🔀 Routing แต่ละหน้า - เพิ่ม flex-1 ให้ยืดเต็มพื้นที่ */}
+        {/* หน้าเนื้อหา */}
         <main className="flex-1">
-            <Routes>
+          <Routes>
             <Route
               path="/"
-              element={<Home onAddToCart={(product) => handleAddToCart(product)} />}
+              element={<Home onAddToCart={handleAddToCart} />}
             />
             <Route
               path="/products"
-              element={<Products onAddToCart={(product) => handleAddToCart(product)} />}
+              element={<Products onAddToCart={handleAddToCart} />}
             />
             <Route
               path="/product/:id"
-              element={<ProductDetail onAddToCart={(product) => handleAddToCart(product)} />}
+              element={<ProductDetail onAddToCart={handleAddToCart} />}
             />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            </Routes>
+          </Routes>
         </main>
 
-        {/* ✅ Footer จะอยู่ด้านล่างสุดเสมอ */}
+        {/* Footer */}
         <Footer />
       </div>
     </Router>
