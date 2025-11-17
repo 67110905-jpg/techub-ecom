@@ -1,14 +1,12 @@
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from "react-router-dom";
 
-/**
- * Footer Component - ส่วนท้ายของเว็บไซต์
- * แสดงข้อมูลติดต่อและ Social Media
- */
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white mt-16">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold mb-4">TecHub Ecom</h3>
@@ -16,15 +14,9 @@ export default function Footer() {
               ศูนย์รวมอุปกรณ์คอมพิวเตอร์และเกมมิ่งคุณภาพสูง
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-blue-400 transition">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="hover:text-blue-400 transition">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="hover:text-blue-400 transition">
-                <Instagram size={20} />
-              </a>
+              <a href="#" className="hover:text-blue-400 transition"><Facebook size={20} /></a>
+              <a href="#" className="hover:text-blue-400 transition"><Twitter size={20} /></a>
+              <a href="#" className="hover:text-blue-400 transition"><Instagram size={20} /></a>
             </div>
           </div>
 
@@ -32,10 +24,10 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">เมนูลัด</h3>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="/" className="hover:text-white transition">หน้าแรก</a></li>
-              <li><a href="/products" className="hover:text-white transition">สินค้า</a></li>
-              <li><a href="/contact" className="hover:text-white transition">ติดต่อ</a></li>
-              <li><a href="/about" className="hover:text-white transition">เกี่ยวกับเรา</a></li>
+              <li><Link to="/" className="hover:text-white transition">หน้าแรก</Link></li>
+              <li><Link to="/products" className="hover:text-white transition">สินค้า</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition">ติดต่อ</Link></li>
+              <li><Link to="/about" className="hover:text-white transition">เกี่ยวกับเรา</Link></li>
             </ul>
           </div>
 
@@ -43,7 +35,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">บริการลูกค้า</h3>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="/contact" className="hover:text-white transition">ติดต่อเราการคืนสินค้า</a></li>
+              <li><Link to="/contact" className="hover:text-white transition">ติดต่อเราการคืนสินค้า</Link></li>
             </ul>
           </div>
 
@@ -65,6 +57,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
